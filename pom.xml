@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hyp.learn</groupId>
+    <artifactId>safety-drill</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>safety-drill</name>
+    <description>基于spring boot 2.2.4、shiro、session/jwt、redis、swagger2、mybatis 、thymeleaf/freemarker，权限控制的方式为
+        RBAC。代码通熟易懂，可以用做练手项目
+    </description>
+
+    <modules>
+        <module>spring-boot-shiro-frame</module>
+        <module>company-frame</module>
+    </modules>
+</project>

@@ -1,0 +1,24 @@
+# DataSource Config
+spring:
+  application:
+    name: company-frame
+  profiles:
+    active: prod
+server:
+  servlet:
+    context-path: /
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: ASSIGN_UUID
+      #逻辑删除配置
+      logic-delete-field: deleted
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+  type-aliases-package: com.hyp.learn.cf.entity
+
+swagger2:
+  enable: true

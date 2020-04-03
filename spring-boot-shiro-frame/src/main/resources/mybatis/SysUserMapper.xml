@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.hyp.learn.shiro.persistence.mapper.SysUserMapper">
+    <resultMap id="rm" type="com.hyp.learn.shiro.persistence.beans.SysUser">
+        <result property="id" jdbcType="BIGINT" column="id"/>
+        <result property="username" jdbcType="VARCHAR" column="username"/>
+        <result property="password" jdbcType="VARCHAR" column="password"/>
+        <result property="nickName" jdbcType="VARCHAR" column="nick_name"/>
+        <result property="phone" jdbcType="VARCHAR" column="mobile"/>
+        <result property="email" jdbcType="VARCHAR" column="email"/>
+        <result property="qq" jdbcType="VARCHAR" column="qq"/>
+        <result property="birthday" jdbcType="DATE" column="birthday"/>
+        <result property="gender" jdbcType="TINYINT" column="gender"/>
+        <result property="avatar" jdbcType="VARCHAR" column="avatar"/>
+        <result property="userType" jdbcType="CHAR" column="user_type"/>
+        <result column="create_where" jdbcType="TINYINT" property="createWhere"/>
+        <result property="regIp" jdbcType="VARCHAR" column="reg_ip"/>
+        <result property="lastLoginIp" jdbcType="VARCHAR" column="last_login_ip"/>
+        <result property="lastLoginTime" jdbcType="TIMESTAMP" column="last_login_time"/>
+        <result property="loginCount" jdbcType="INTEGER" column="login_count"/>
+        <result property="remark" jdbcType="VARCHAR" column="remark"/>
+        <result property="createTime" jdbcType="TIMESTAMP" column="create_time"/>
+        <result property="updateTime" jdbcType="TIMESTAMP" column="update_time"/>
+    </resultMap>
+
+    <select id="findPageBreakByCondition" parameterType="com.hyp.learn.shiro.business.vo.UserVO" resultMap="rm">
+        SELECT
+        s.*
+        FROM
+        sys_user s
+        WHERE
+        1 = 1
+        <if test="u.keywords != null and u.keywords != '' ">
+            AND
+            (
+            s.nick_name LIKE CONCAT('%',#{u.keywords , jdbcType=VARCHAR},'%') or
+            s.mobile LIKE CONCAT('%',#{u.keywords , jdbcType=VARCHAR},'%') or
+            s.username LIKE CONCAT('%',#{u.keywords , jdbcType=VARCHAR},'%') or
+            s.password LIKE CONCAT('%',#{u.keywords , jdbcType=VARCHAR},'%') or
+            s.email LIKE CONCAT('%',#{u.keywords , jdbcType=VARCHAR},'%') or
+            s.qq LIKE CONCAT('%',#{u.keywords , jdbcType=VARCHAR},'%') or
+            s.remark LIKE CONCAT('%',#{u.keywords , jdbcType=VARCHAR},'%') or
+            )
+        </if>
+        <!-- 查询用户信息 -->
+        <if test="u.user != null">
+            <if test="u.user.id!=null">
+                AND s.id = #{u.user.id}
+            </if>
+            <if test="u.user.gender!=null">
+                AND s.gender = #{u.user.gender}
+            </if>
+            <if test="u.user.userType!=null">
+                AND s.user_type = #{u.user.userType}
+            </if>
+            <if test="u.user.username!=null">
+                AND s.username = #{u.user.username}
+            </if>
+            <if test="u.user.password!=null">
+                AND s.password = #{u.user.password}
+            </if>
+            <if test="u.user.lastLoginIp!=null">
+                AND s.last_login_ip = #{u.user.lastLoginIp}
+            </if>
+            <if test="u.user.lastLoginTime!=null">
+                AND s.last_login_time = #{u.user.lastLoginTime}
+            </if>
+        </if>
+        GROUP BY
+        s.id
+        ORDER BY
+        s.create_time DESC
+    </select>
+
+    <select id="listByRoleId" parameterType="Long" resultMap="rm">
+        SELECT s.id,
+               s.username,
+               s.nick_name
+        FROM sys_user s
+                 INNER JOIN sys_user_role sur ON sur.user_id = s.id
+        WHERE sur.role_id = #{roleId}
+    </select>
+
+</mapper>
+

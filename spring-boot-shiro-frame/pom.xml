@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.hyp.learn</groupId>
+    <artifactId>spring-boot-shiro-frame</artifactId>
+    <version>1.0.0</version>
+    <name>spring-boot-shiro-frame</name>
+    <description>Shiro 结合Spring Boot，权限框架</description>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <maven.test.skip>true</maven.test.skip>
+        <mybatis.version>2.1.2</mybatis.version>
+        <mapper.version>2.1.0</mapper.version>
+        <pagehelper.version>1.2.3</pagehelper.version>
+        <druid.version>1.1.21</druid.version>
+        <fastjson.version>1.2.44</fastjson.version>
+        <shiro.spring.version>1.4.0</shiro.spring.version>
+        <shiro.redis.version>2.4.2.1-RELEASE</shiro.redis.version>
+        <shiro.freemarker.tags.version>0.1</shiro.freemarker.tags.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>2.2.4.RELEASE</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
+        <!--&lt;!&ndash;Ctrl+F10 手动刷新&ndash;&gt;-->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-devtools</artifactId>-->
+        <!--<scope>runtime</scope>&lt;!&ndash;runtime 依赖在运行和测试系统的时候需要&ndash;&gt;-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+        <!--集成redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!--freemarker-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+
+        <!--freemarker shiro-->
+        <dependency>
+            <groupId>net.mingsoft</groupId>
+            <artifactId>shiro-freemarker-tags</artifactId>
+            <version>${shiro.freemarker.tags.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>2.8.6</version>
+        </dependency>
+
+        <!--&lt;!&ndash;mybatis&ndash;&gt;-->
+        <!--<dependency>-->
+        <!--<groupId>org.mybatis.spring.boot</groupId>-->
+        <!--<artifactId>mybatis-spring-boot-starter</artifactId>-->
+        <!--<version>${mybatis.version}</version>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash;mapper&ndash;&gt;-->
+        <!--<dependency>-->
+        <!--<groupId>tk.mybatis</groupId>-->
+        <!--<artifactId>mapper-spring-boot-starter</artifactId>-->
+        <!--<version>${mapper.version}</version>-->
+        <!--<exclusions>-->
+        <!--<exclusion>-->
+        <!--<artifactId>mybatis-spring-boot-starter</artifactId>-->
+        <!--<groupId>org.mybatis.spring.boot</groupId>-->
+        <!--</exclusion>-->
+        <!--</exclusions>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash;pagehelper&ndash;&gt;-->
+        <!--<dependency>-->
+        <!--<groupId>com.github.pagehelper</groupId>-->
+        <!--<artifactId>pagehelper-spring-boot-starter</artifactId>-->
+        <!--<version>${pagehelper.version}</version>-->
+        <!--</dependency>-->
+
+        <!--mybatis plus-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.4</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--代码生成-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+
+
+        <!--springboot 集成Mybatis所需jar配置 end -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <!--druid依赖添加-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+
+        <!--web-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+
+        <!--session-->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
+
+
+        <!--h2-->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!--mysql-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--shiro redis-->
+        <dependency>
+            <groupId>org.crazycake</groupId>
+            <artifactId>shiro-redis</artifactId>
+            <version>${shiro.redis.version}</version>
+        </dependency>
+
+        <!--shiro spring-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.spring.version}</version>
+        </dependency>
+
+        <!--shiro cas-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-cas</artifactId>
+            <version>${shiro.spring.version}</version>
+        </dependency>
+
+        <!--shiro quartz-->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-quartz</artifactId>
+            <version>${shiro.spring.version}</version>
+        </dependency>
+
+        <!-- 1. swagger-bootstrap-ui 目前改名为 knife4j -->
+        <!-- 2. 实现 swagger-bootstrap-ui 的自动化配置  -->
+        <!-- 3. 因为 knife4j-spring 已经引入 Swagger 依赖，所以无需重复引入 -->
+        <!--<dependency>-->
+        <!--<groupId>com.github.xiaoymin</groupId>-->
+        <!--<artifactId>knife4j-spring</artifactId>-->
+        <!--<version>1.9.6</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+        <!--<groupId>com.github.xiaoymin</groupId>-->
+        <!--<artifactId>knife4j-spring-ui</artifactId>-->
+        <!--<version>1.9.6</version>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
+
+        <!--log-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.29</version>
+        </dependency>
+
+        <!-- kaptcha 验证码 -->
+        <dependency>
+            <groupId>com.github.penggle</groupId>
+            <artifactId>kaptcha</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+
+        <!--&lt;!&ndash;添加 shiro-spring-boot-web-starter ，这个依赖可以代替 shiro-web 和 shiro-spring 两个依赖&ndash;&gt;-->
+        <!--<dependency>-->
+        <!--<groupId>org.apache.shiro</groupId>-->
+        <!--<artifactId>shiro-spring-boot-web-starter</artifactId>-->
+        <!--<version>1.4.0</version>-->
+        <!--</dependency>-->
+
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <!-- 指定该Main Class为全局的唯一入口 -->
+                    <mainClass>com.hyp.learn.shiro.SpringBootShiroFrameApplication</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <!--可以把依赖的包都打包到生成的Jar包中-->
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
