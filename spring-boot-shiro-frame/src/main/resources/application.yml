@@ -2,7 +2,7 @@ spring:
   application:
     name: shiro-admin
   profiles:
-    active: prod
+    active: dev
   freemarker:
     allow-request-override: false
     allow-session-override: false

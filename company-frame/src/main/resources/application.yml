@@ -3,7 +3,7 @@ spring:
   application:
     name: company-frame
   profiles:
-    active: prod
+    active: dev
 server:
   servlet:
     context-path: /
