@@ -11,6 +11,8 @@
         RBAC。代码通熟易懂，可以用做练手项目
     </description>
 
+    <packaging>pom</packaging>
+
     <modules>
         <module>spring-boot-shiro-frame</module>
         <module>company-frame</module>
