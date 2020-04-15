@@ -18,8 +18,7 @@ CREATE TABLE `sys_resources`
   `create_time` datetime     DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
   `update_time` datetime     DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
   `deleted`     tinyint(4)   DEFAULT '1' COMMENT '是否删除(1未删除；0已删除)',
-  PRIMARY KEY (`id`),
-  KEY `idx_sys_resource_parent_id` (`p_id`)
+  PRIMARY KEY (`id`)
 );
 
 
@@ -66,7 +65,7 @@ CREATE TABLE `sys_user`
   `username`        varchar(100)                 DEFAULT NULL,
   `salt`            varchar(40)                  DEFAULT NULL COMMENT '加密盐值',
   `password`        varchar(100)                 DEFAULT NULL COMMENT '登录密码',
-  `nickName`        varchar(30)                  DEFAULT '' COMMENT '昵称',
+  `nick_name`       varchar(30)                  DEFAULT '' COMMENT '昵称',
   `phone`           varchar(30)                  DEFAULT NULL COMMENT '手机号',
   `email`           varchar(100)                 DEFAULT NULL COMMENT '邮箱地址',
   `qq`              varchar(20)                  DEFAULT NULL COMMENT 'QQ',
@@ -194,9 +193,11 @@ INSERT INTO `sys_resources`
 VALUES ('20', '20', '数据监控', 'menu', '', '', null, '3', '0', '1', 'fa fa-heartbeat', '2018-05-17 12:38:20',
         '2018-05-17 12:53:06', 1);
 INSERT INTO `sys_resources`
-VALUES ('21', '21', 'Druid监控', 'menu', '/druid/index.html', 'druid', '20', '1', '1', '1', '', '2018-05-17 12:46:37',
+VALUES ('21', '21', 'Druid监控', 'menu', '/druid/index.html', 'druid', '20', '1', '0', '1', '', '2018-05-17 12:46:37',
         '2018-05-17 12:52:33', 1);
-
+INSERT INTO `sys_resources`
+VALUES ('22', '22', 'API监控', 'menu', '/swagger-ui.html', 'swagger', '20', '2', '0', '1', '', '2018-05-17 12:46:37',
+        '2018-05-17 12:52:33', 1);
 
 
 -- ----------------------------

@@ -23,7 +23,7 @@ import java.util.List;
 public class SwaggerConfig {
 
     @Value("${swagger2.enable}")
-    private boolean enable;
+    private boolean enable = true;
 
     @Bean
     public Docket createRestApi() {

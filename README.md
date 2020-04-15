@@ -7,3 +7,5 @@
     基于Session进行会话控制，使用FreeMarker模板引擎
 - company-frame: 
     基于JWT进行会话，使用thymeleaf模板引擎
+- rest-shiro-frame:
+    基于Jwt+RESTful+前后端分离
